@@ -5,6 +5,7 @@ Receives form submissions from Lovable → Generates LBA PDF → Sends via SendG
 """
 
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime, timedelta
 import json
@@ -18,6 +19,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI(title="DebtClear Webhook", version="1.0.0")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # ===== CONFIG =====
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
