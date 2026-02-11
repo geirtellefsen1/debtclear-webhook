@@ -26,7 +26,7 @@ app.add_middleware(
     allow_origins=[
         "https://debtclear.eu",
         "https://claim-kindly.lovable.app",
-        "https://lovableproject.com",
+        "https://id-preview--7e39b9d5-90a1-4864-a867-2d376f365da5.lovable.app",
         "http://localhost:3000",
         "http://localhost:5173",
     ],
