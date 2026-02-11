@@ -5,7 +5,7 @@ Receives form submissions from Lovable → Generates LBA PDF → Sends via SendG
 """
 
 from fastapi import FastAPI, HTTPException, Request
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel
 from datetime import datetime, timedelta
 import json
 import os
@@ -28,7 +28,7 @@ PDF_OUTPUT_DIR.mkdir(exist_ok=True)
 
 class IntakeSubmission(BaseModel):
     """Form submission from Lovable"""
-    client_email: EmailStr
+    client_email: str
     client_name: str
     client_business: str
     debtor_name: str
@@ -43,7 +43,7 @@ class IntakeSubmission(BaseModel):
 class CaseData(BaseModel):
     """Processed case data"""
     case_id: str
-    client_email: EmailStr
+    client_email: str
     debtor_name: str
     amount_owed_gbp: float
     statutory_interest_gbp: float
